@@ -11,12 +11,15 @@ class PasteCreateView(CreateView):
     template_name = "voidpaste/index.html"
 
     def get_success_url(self):
-        return reverse("voidpaste:paste-detail", kwargs={'link': self.object.link})
+        return reverse(
+            "voidpaste:paste-detail",
+            kwargs={"link": self.object.link}
+        )
 
 
 class PasteDetailView(DetailView):
     model = Paste
     template_name = "voidpaste/paste_detail.html"
     context_object_name = "paste"
-    slug_field = 'link'
-    slug_url_kwarg = 'link'
+    slug_field = "link"
+    slug_url_kwarg = "link"
