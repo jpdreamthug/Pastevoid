@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
+
+from voidpaste.models import Paste
 
 
-def index(request):
-    return render(request, "base.html")
+class PasteCreateView(CreateView):
+    model = Paste

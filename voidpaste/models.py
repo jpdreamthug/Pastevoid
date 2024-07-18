@@ -15,7 +15,7 @@ class Category(models.Model):
         return self.name
 
 
-class Post(models.Model):
+class Paste(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -43,10 +43,10 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    paste = models.ForeignKey(Paste, on_delete=models.CASCADE, related_name="comments")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Comment by {self.user.username} on {self.post.title}"
+        return f"Comment by {self.user.username} on {self.paste.title}"
