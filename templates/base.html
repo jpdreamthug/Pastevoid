@@ -8,8 +8,17 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-  {% block content %}
+  <div class="container-fluid">
+    {% block header %}
+      {% include "includes/header.html" %}
+    {% endblock %}
 
-  {% endblock %}
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+      {% include "includes/footer.html" %}
+    {% endblock %}
+  </div>
 </body>
 </html>

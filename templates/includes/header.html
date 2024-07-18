@@ -1,0 +1,11 @@
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item"><a style="text-decoration: none; color: black" href="{% url 'voidpaste:index' %}">Void Paste</a></li>
+
+  {% if user.is_authenticated %}
+{# get_absolute_url   #}
+    <li class="list-group-item">User: <a href="#">{{ user.username }}</a></li>
+    <li class="list-group-item"><a href="#">Logout</a></li>
+  {% else %}
+    <li class="list-group-item">Login</li>
+  {% endif %}
+</ul>
