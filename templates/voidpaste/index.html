@@ -1,6 +1,16 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
 
 {% block content %}
-
-
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1>Create a New Paste</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Create Paste</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

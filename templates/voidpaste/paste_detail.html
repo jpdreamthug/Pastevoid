@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1>{{ paste.title }}</h1>
+        <p>{{ paste.content }}</p>
+        <p><strong>Category:</strong> {{ paste.category.name }}</p>
+        <p><strong>Created at:</strong> {{ paste.created_at }}</p>
+    </div>
+</div>
+{% endblock %}
