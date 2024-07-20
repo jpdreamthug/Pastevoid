@@ -6,7 +6,8 @@ from voidpaste.views import (
     PasteDetailView,
     ProfileListView,
     PasteUpdateView,
-    PasteDeleteView, CustomLoginView,
+    PasteDeleteView,
+    CustomLoginView,
 )
 
 urlpatterns = [
