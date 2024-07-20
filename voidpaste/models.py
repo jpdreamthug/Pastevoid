@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from .utils import set_delete_time, generate_unique_link, DELETE_CHOICES
+from voidpaste.utils import set_delete_time, generate_unique_link, DELETE_CHOICES
 
 
 class User(AbstractUser):
@@ -9,7 +9,10 @@ class User(AbstractUser):
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
