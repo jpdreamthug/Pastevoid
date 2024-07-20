@@ -42,21 +42,13 @@ header {
     padding: 0;
 }
 
-.btn {
-    text-decoration: none;
-    display: inline-block;
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-
-}
 
 .card-header {
     background: linear-gradient(to right, #2a3457, #26304f);
 }
 
 
-.btn-new-post {
+.btn-color {
     background: linear-gradient(to right, #2a3457, #26304f);
 }
 

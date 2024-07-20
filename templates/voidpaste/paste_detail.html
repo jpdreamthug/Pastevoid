@@ -1,23 +1,56 @@
 {% extends "base.html" %}
 
 {% block title %}{{ paste.title }}{% endblock %}
+{% block card_title %}{{ paste.title }}{% endblock %}
+
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="title">{{ paste.title }}</h4>
-            </div>
-            <div class="card-body">
-                <p>{{ paste.content }}</p>
-                <p><strong>Category:</strong> {{ paste.category.name }}</p>
-                <p><strong>Created at:</strong> {{ paste.created_at }}</p>
-                {% if paste.delete_at %}
-                  <p><strong>Post will be deleted at:</strong> {{ paste.delete_at }}</p>
-                {% endif %}
-            </div>
-        </div>
+  <div class="card-text pb-2">
+    <small class="text-muted">Posted <strong>{{ paste.user.username }}</strong> at</small>
+    <small class="text-muted">{{ paste.created_at|date:"F d, Y h:i a" }}</small>
+    {% if paste.updated_at %}
+      <div>
+        <small class="text-muted inline-block">Edited at: {{ paste.updated_at }}</small>
+      </div>
+    {% endif %}
+  </div>
+  <p class="card-text">{{ paste.content }}</p>
+  {% if paste.delete_at %}
+    <p><strong>Post will be deleted at:</strong> {{ paste.delete_at }}</p>
+  {% endif %}
+  {% if user.is_authenticated %}
+    <div data-mdb-input-init class="form-outline mb-4">
+      <input type="text" id="addANote" class="form-control" placeholder="Type comment..."/>
+      <label class="form-label" for="addANote">+ Add a note</label>
     </div>
-</div>
+  {% else %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <p class="mb-0">
+        Please login to post a comment. <a href="{% url 'voidpaste:login' %}" class="alert-link">Login</a>
+      </p>
+    </div>  {% endif %}
+  <div class="row row-cols-1">
+    {% for comment in comments %}
+      <div class="col mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text">
+              <small class="text-muted">{{ comment.user.username }} at</small>
+              <small class="text-muted">{{ comment.created_at|date:"F d, Y h:i a" }}</small>
+            </p>
+            <p class="card-text">{{ comment.content }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text">No comments found.</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
 {% endblock %}
