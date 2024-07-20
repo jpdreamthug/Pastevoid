@@ -2,23 +2,30 @@ import random
 import string
 from datetime import timedelta
 
+
 from django.utils import timezone
 
 DELETE_CHOICES = [
+    ("10_minutes", "10 Minutes"),
     ("1_hour", "1 Hour"),
     ("1_day", "1 Day"),
     ("1_week", "1 Week"),
+    ("2_weeks", "2 Weeks"),
     ("never", "Never"),
 ]
 
 
 def set_delete_time(choice):
-    if choice == "1_hour":
+    if choice == "10_minutes":
+        return timezone.now() + timedelta(minutes=10)
+    elif choice == "1_hour":
         return timezone.now() + timedelta(hours=1)
     elif choice == "1_day":
         return timezone.now() + timedelta(days=1)
     elif choice == "1_week":
         return timezone.now() + timedelta(weeks=1)
+    elif choice == "2_weeks":
+        return timezone.now() + timedelta(weeks=2)
     else:
         return None
 
