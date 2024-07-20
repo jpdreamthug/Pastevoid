@@ -32,10 +32,11 @@ class Paste(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True
     )
-    link = models.CharField(
+    link = models.SlugField(
         max_length=8,
         unique=True,
-        default=generate_unique_link
+        default=generate_unique_link,
+        editable=False
     )
     delete_at = models.DateTimeField(null=True, blank=True)
     delete_choice = models.CharField(
