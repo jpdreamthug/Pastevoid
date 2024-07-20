@@ -1,11 +1,17 @@
-<ul class="list-group list-group-horizontal">
-  <li class="list-group-item"><a style="text-decoration: none; color: black" href="{% url 'voidpaste:index' %}">Void Paste</a></li>
+<header>
+  <h1><a class="home" href="{% url 'voidpaste:index' %}">Void Paste</a></h1>
+  <nav>
+    {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'voidpaste:profile'  %}">{{ user.username }}</a>
+        <form action="{% url 'voidpaste:logout' %}" method="post" class="logout-form">
+          {% csrf_token %}
+          <input class="logout-btn nav-link" type="submit" value="Logout">
+        </form>
+{#        <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
+    {% else %}
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+        <a class="nav-link" href="#">Sign Up</a>
+    {% endif %}
 
-  {% if user.is_authenticated %}
-{# get_absolute_url   #}
-    <li class="list-group-item">User: <a href="#">{{ user.username }}</a></li>
-    <li class="list-group-item"><a href="#">Logout</a></li>
-  {% else %}
-    <li class="list-group-item">Login</li>
-  {% endif %}
-</ul>
+  </nav>
+</header>

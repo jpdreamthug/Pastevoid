@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ paste.title }}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        <h1>{{ paste.title }}</h1>
-        <p>{{ paste.content }}</p>
-        <p><strong>Category:</strong> {{ paste.category.name }}</p>
-        <p><strong>Created at:</strong> {{ paste.created_at }}</p>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="title">{{ paste.title }}</h4>
+            </div>
+            <div class="card-body">
+                <p>{{ paste.content }}</p>
+                <p><strong>Category:</strong> {{ paste.category.name }}</p>
+                <p><strong>Created at:</strong> {{ paste.created_at }}</p>
+                {% if paste.delete_at %}
+                  <p><strong>Post will be deleted at:</strong> {{ paste.delete_at }}</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

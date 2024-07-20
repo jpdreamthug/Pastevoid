@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, serif;
+}
+
+header {
+    background: linear-gradient(to right, #2a3457, #26304f);
+    padding: 0 30px 0 30px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    unicode-bidi: isolate;
+
+}
+
+.home {
+    position: relative;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.nav-link {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+}
+
+.logout-form {
+    text-align: center;
+    display: inline-block;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+.card-header {
+    background: linear-gradient(to right, #2a3457, #26304f);
+}
+
+
+.btn-new-post {
+    background: linear-gradient(to right, #2a3457, #26304f);
+}
+
+.title {
+    color: #fff;
+    font-weight: 600;
+}
