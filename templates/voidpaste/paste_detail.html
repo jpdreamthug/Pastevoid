@@ -1,42 +1,47 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block title %}{{ paste.title }}{% endblock %}
 {% block card_title %}{{ paste.title }}{% endblock %}
 
-
 {% block content %}
   <div class="card-text pb-2">
-    <small class="text-muted">Posted <strong>{{ paste.user.username }}</strong> at</small>
+    <small class="text-muted">Posted by <strong>{{ paste.user.username }}</strong> at</small>
     <small class="text-muted">{{ paste.created_at|date:"F d, Y h:i a" }}</small>
     {% if paste.updated_at %}
       <div>
-        <small class="text-muted inline-block">Edited at: {{ paste.updated_at }}</small>
+        <small class="text-muted inline-block">Edited at: {{ paste.updated_at|date:"F d, Y h:i a" }}</small>
       </div>
     {% endif %}
   </div>
   <p class="card-text">{{ paste.content }}</p>
   {% if paste.delete_at %}
-    <p><strong>Post will be deleted at:</strong> {{ paste.delete_at }}</p>
+    <p><strong>Post will be deleted at:</strong> {{ paste.delete_at|date:"F d, Y h:i a" }}</p>
   {% endif %}
+
+  <h4 class="mt-4">Comments</h4>
   {% if user.is_authenticated %}
-    <div data-mdb-input-init class="form-outline mb-4">
-      <input type="text" id="addANote" class="form-control" placeholder="Type comment..."/>
-      <label class="form-label" for="addANote">+ Add a note</label>
-    </div>
+    <form method="post" action="{% url 'voidpaste:add-comment' paste.link %}">
+      {% csrf_token %}
+      {{ comment_form|crispy }}
+      <button type="submit" class="btn btn-primary mt-2">Add Comment</button>
+    </form>
   {% else %}
     <div class="alert alert-info alert-dismissible fade show" role="alert">
       <p class="mb-0">
-        Please login to post a comment. <a href="{% url 'voidpaste:login' %}" class="alert-link">Login</a>
+        Please <a href="{% url 'voidpaste:login' %}?next={{ request.path }}" class="alert-link">login</a> to post a comment.
       </p>
-    </div>  {% endif %}
-  <div class="row row-cols-1">
+    </div>
+  {% endif %}
+
+  <div class="row row-cols-1 mt-4">
     {% for comment in comments %}
       <div class="col mb-4">
         <div class="card shadow-sm">
           <div class="card-body">
             <p class="card-text">
-              <small class="text-muted">{{ comment.user.username }} at</small>
-              <small class="text-muted">{{ comment.created_at|date:"F d, Y h:i a" }}</small>
+              <small class="text-muted">{{ comment.user.username }} at {{ comment.created_at|date:"F d, Y h:i a" }}</small>
             </p>
             <p class="card-text">{{ comment.content }}</p>
           </div>
@@ -46,11 +51,11 @@
       <div class="col">
         <div class="card shadow-sm">
           <div class="card-body">
-            <p class="card-text">No comments found.</p>
+            <p class="card-text">No comments yet.</p>
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
-
+  {% include "includes/pagination.html" %}
 {% endblock %}

@@ -11,8 +11,8 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
@@ -21,22 +21,14 @@ class Category(models.Model):
 class Paste(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True
     )
     link = models.SlugField(
-        max_length=8,
-        unique=True,
-        default=generate_unique_link,
-        editable=False
+        max_length=8, unique=True, default=generate_unique_link, editable=False
     )
     delete_at = models.DateTimeField(null=True, blank=True)
     delete_choice = models.CharField(
@@ -56,11 +48,7 @@ class Paste(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    paste = models.ForeignKey(
-        Paste,
-        on_delete=models.CASCADE,
-        related_name="comments"
-    )
+    paste = models.ForeignKey(Paste, on_delete=models.CASCADE, related_name="comments")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
