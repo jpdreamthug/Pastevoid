@@ -47,10 +47,6 @@ class CommentForm(forms.ModelForm):
             "content": "",
         }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["content"].widget.attrs.update({"autofocus": "autofocus"})
-
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)

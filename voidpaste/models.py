@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from voidpaste.utils import set_delete_time, generate_unique_link, DELETE_CHOICES
+from voidpaste.utils import (
+    set_delete_time,
+    generate_unique_link,
+    DELETE_CHOICES
+)
 
 
 class User(AbstractUser):
@@ -21,7 +25,12 @@ class Category(models.Model):
 class Paste(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(
@@ -48,7 +57,11 @@ class Paste(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    paste = models.ForeignKey(Paste, on_delete=models.CASCADE, related_name="comments")
+    paste = models.ForeignKey(
+        Paste,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

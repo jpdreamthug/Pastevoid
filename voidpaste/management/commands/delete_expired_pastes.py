@@ -10,4 +10,6 @@ class Command(BaseCommand):
         expired_pastes = Paste.objects.filter(delete_at__lte=timezone.now())
         count = expired_pastes.count()
         expired_pastes.delete()
-        self.stdout.write(self.style.SUCCESS(f'Deleted {count} expired pastes.'))
+        self.stdout.write(
+            self.style.SUCCESS(f'Deleted {count} expired pastes.')
+        )

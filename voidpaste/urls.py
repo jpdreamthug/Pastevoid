@@ -1,4 +1,4 @@
-from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth.views import LogoutView
 from django.urls import path, re_path
 
 from voidpaste.views import (
@@ -19,7 +19,9 @@ urlpatterns = [
     path("login/", CustomLoginView.as_view(), name="login"),
     path("register/", RegisterView.as_view(), name="register"),
     re_path(
-        r"^(?P<link>[a-zA-Z0-9]{8})/$", PasteDetailView.as_view(), name="paste-detail"
+        r"^(?P<link>[a-zA-Z0-9]{8})/$",
+        PasteDetailView.as_view(),
+        name="paste-detail"
     ),
     re_path(
         r"^(?P<link>[a-zA-Z0-9]{8})/edit/$",

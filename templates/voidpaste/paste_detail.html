@@ -15,7 +15,7 @@
       </div>
     {% endif %}
   </div>
-  <p class="card-text">{{ paste.content }}</p>
+  <p class="card-text">{{ paste.content|linebreaksbr }}</p>
   {% if paste.delete_at %}
     <p><strong>Post will be deleted at:</strong> {{ paste.delete_at|date:"F d, Y h:i a" }}</p>
   {% endif %}
@@ -25,7 +25,7 @@
     <form method="post" action="{% url 'voidpaste:add-comment' paste.link %}">
       {% csrf_token %}
       {{ comment_form|crispy }}
-      <button type="submit" class="btn btn-primary mt-2">Add Comment</button>
+      <button type="submit" class="btn btn-primary mt-2 btn-color">Add Comment</button>
     </form>
   {% else %}
     <div class="alert alert-info alert-dismissible fade show" role="alert">
