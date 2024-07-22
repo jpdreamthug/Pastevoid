@@ -2,6 +2,8 @@
 
 VoidPaste is a Django-based web application for sharing text snippets, similar to Pastebin. The project includes features such as user authentication, paste categorization, and commenting.
 
+Check this out https://void-paste.onrender.com/
+
 ## Table of Contents
 
 - [Features](#features)
@@ -9,6 +11,7 @@ VoidPaste is a Django-based web application for sharing text snippets, similar t
 - [Installation](#installation)
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
+- [Initial Data](#initial-data)
 
 
 ## Features
@@ -59,6 +62,14 @@ VoidPaste is a Django-based web application for sharing text snippets, similar t
     ```sh
     python manage.py runserver
     ```
+
+## Initial Data
+
+   To upload initial data in DB use this command:
+
+   ```sh
+   python manage.py loaddata initial_data.json
+   ```
 
 ## Environment Variables
 

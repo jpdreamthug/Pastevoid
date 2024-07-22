@@ -26,7 +26,7 @@ DATABASES = {
     "default": dj_database_url.config("DATABASE_URL", conn_max_age=600)
 }
 
-DEBUG = "RENDER" not in os.environ
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 STATIC_URL = '/static/'
 
