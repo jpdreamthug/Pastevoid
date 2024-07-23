@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 from voidpaste.utils import (
     set_delete_time,
     generate_unique_link,
@@ -53,6 +54,12 @@ class Paste(models.Model):
 
     def __str__(self):
         return self.title
+
+    def is_expired(self):
+        if self.delete_at <= timezone.now():
+            self.delete()
+            return True
+        return False
 
 
 class Comment(models.Model):
