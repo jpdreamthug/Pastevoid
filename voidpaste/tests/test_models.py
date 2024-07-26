@@ -1,6 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.utils import timezone
-from django.contrib.auth import get_user_model
+
 from voidpaste.models import Paste, Category, Comment
 from voidpaste.utils import generate_unique_link
 

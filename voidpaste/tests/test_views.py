@@ -1,6 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
+
 from voidpaste.models import Paste, Category, Comment
 
 User = get_user_model()

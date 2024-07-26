@@ -4,7 +4,6 @@ VoidPaste is a Django-based web application for sharing text snippets, similar t
 
 Check this out https://void-paste.onrender.com/
 
-Test user
 ## Test User
    ```sh
    login: test_admin

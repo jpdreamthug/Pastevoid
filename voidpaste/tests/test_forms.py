@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from voidpaste.forms import PasteForm, CommentForm, CustomUserCreationForm
 from voidpaste.models import Category
 

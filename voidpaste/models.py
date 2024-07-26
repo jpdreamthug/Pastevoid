@@ -1,6 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.utils import timezone
+
 from voidpaste.utils import (
     set_delete_time,
     generate_unique_link,
