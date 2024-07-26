@@ -12,11 +12,7 @@ from django.views.generic import (
     DeleteView,
 )
 
-from voidpaste.forms import (
-    PasteForm,
-    CustomUserCreationForm,
-    CommentForm
-)
+from voidpaste.forms import PasteForm, CustomUserCreationForm, CommentForm
 from voidpaste.models import Paste, Comment
 
 

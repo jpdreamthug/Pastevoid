@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+
 from pathlib import Path
 
 # Add these at the top of your settings.py
@@ -28,10 +29,10 @@ DATABASES = {
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = (BASE_DIR / "static",)
 

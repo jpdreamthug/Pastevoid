@@ -13,30 +13,11 @@ from voidpaste.views import (
 )
 
 urlpatterns = [
-    path(
-        "",
-        PasteCreateView.as_view(),
-        name="index"
-    ),
-    path(
-        "profile/",
-        ProfileListView.as_view(),
-        name="profile"),
-    path(
-        "logout/",
-        LogoutView.as_view(next_page="/"),
-        name="logout"
-    ),
-    path(
-        "login/",
-        CustomLoginView.as_view(),
-        name="login"
-    ),
-    path(
-        "register/",
-        RegisterView.as_view(),
-        name="register"
-    ),
+    path("", PasteCreateView.as_view(), name="index"),
+    path("profile/", ProfileListView.as_view(), name="profile"),
+    path("logout/", LogoutView.as_view(next_page="/"), name="logout"),
+    path("login/", CustomLoginView.as_view(), name="login"),
+    path("register/", RegisterView.as_view(), name="register"),
     re_path(
         r"^(?P<link>[a-zA-Z0-9]{8})/$",
         PasteDetailView.as_view(),
