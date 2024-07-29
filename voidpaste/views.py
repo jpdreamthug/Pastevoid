@@ -51,9 +51,11 @@ class PasteDetailView(DetailView):
         paginator = Paginator(comments, 5)
         page_number = self.request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-        context["comments"] = page_obj
-        context["comment_form"] = CommentForm()
-        context["page_obj"] = page_obj
+        context.update({
+            "comments": page_obj,
+            "comment_form": CommentForm(),
+            "page_obj": page_obj,
+        })
         return context
 
 
@@ -76,11 +78,8 @@ class PasteUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("voidpaste:profile")
 
     def get_object(self, queryset=None):
-        queryset = Paste.objects.all()
-        if self.request.user.is_authenticated:
-            queryset = queryset.filter(user=self.request.user)
-        link = self.kwargs.get("link")
-        return get_object_or_404(queryset, link=link)
+        queryset = Paste.objects.filter(user=self.request.user)
+        return get_object_or_404(queryset, link=self.kwargs.get("link"))
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
@@ -91,16 +90,11 @@ class PasteUpdateView(LoginRequiredMixin, UpdateView):
 
 class PasteDeleteView(LoginRequiredMixin, DeleteView):
     model = Paste
-
-    def get_success_url(self):
-        return reverse_lazy("voidpaste:profile")
+    success_url = reverse_lazy("voidpaste:profile")
 
     def get_object(self, queryset=None):
-        queryset = Paste.objects.all()
-        if self.request.user.is_authenticated:
-            queryset = queryset.filter(user=self.request.user)
-        link = self.kwargs.get("link")
-        return get_object_or_404(queryset, link=link)
+        queryset = Paste.objects.filter(user=self.request.user)
+        return get_object_or_404(queryset, link=self.kwargs.get("link"))
 
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
@@ -123,8 +117,10 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         paste = get_object_or_404(Paste, link=self.kwargs["link"])
-        context["paste"] = paste
-        context["comments"] = paste.comments.all().order_by("-created_at")
+        context.update({
+            "paste": paste,
+            "comments": paste.comments.order_by("-created_at"),
+        })
         return context
 
 
