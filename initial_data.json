@@ -1,6 +1,6 @@
 [
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 1,
     "fields": {
       "username": "testuser1",
@@ -12,7 +12,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 2,
     "fields": {
       "username": "testuser2",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 3,
     "fields": {
       "username": "testuser3",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 4,
     "fields": {
       "username": "testuser4",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 5,
     "fields": {
       "username": "testuser5",
@@ -60,7 +60,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 6,
     "fields": {
       "username": "testuser6",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 7,
     "fields": {
       "username": "testuser7",
@@ -84,7 +84,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 8,
     "fields": {
       "username": "testuser8",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 9,
     "fields": {
       "username": "testuser9",
@@ -108,7 +108,7 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "voidpaste.user",
     "pk": 10,
     "fields": {
       "username": "testuser10",

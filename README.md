@@ -92,8 +92,6 @@ To keep sensitive information secure, you should use environment variables for c
     ```ini
     DJANGO_SECRET_KEY=your_secret_key
     DJANGO_DEBUG=True
-    ALLOWED_HOSTS=localhost,127.0.0.1
-    DATABASE_URL=sqlite:///db.sqlite3
     ```
 
 ## Usage
