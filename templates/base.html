@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Void Paste{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    {% include "includes/header.html" %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="{% block content_column_class %}col-md-8{% endblock %}">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="title">{% block card_title %}{% endblock %}</h2>
+                    </div>
+                    <div class="card-body">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXlEiwXg/hSlKvdf7HmhD/zOaGFpD4O7pniuhlgGGDwiG6yJJhA1l3J3/ETn"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-czH0q0FZ4LCJSouAYPjSzBlBI7evjtkZtZ7FJWlQ6KnnfC9zvga7tjO3/5ICi7j"
+            crossorigin="anonymous"></script>
+</body>
+</html>

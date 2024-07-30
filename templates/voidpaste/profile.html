@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Your profile{% endblock %}
+{% block card_title %}Profile{% endblock %}
+
+{% block content %}
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    {% if user.email %}
+        <p><strong>Email:</strong> {{ user.email }}</p>
+    {% endif %}
+
+    <h3 class="mt-4">Your Pastes</h3>
+    <div class="row row-cols-1">
+        {% for paste in pastes %}
+            <div class="col mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ paste.title }}</h5>
+                        <p class="card-text">{{ paste.created_at|date:"F d, Y" }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">{{ paste.created_at|date:"h:i a" }}</small>
+                        </p>
+                        <p class="card-text">{{ paste.content|truncatewords:30 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'voidpaste:paste-detail' link=paste.link %}" class="btn btn-sm btn-outline-secondary">View</a>
+                            <div>
+                                <a href="{% url 'voidpaste:paste-edit' link=paste.link %}" class="btn btn-sm btn-primary btn-color">Edit</a>
+                                <form action="{% url 'voidpaste:paste-delete' link=paste.link %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this paste?')">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">No pastes found.</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% include "includes/pagination.html" %}
+{% endblock %}

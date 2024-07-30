@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}{{ object|yesno:"Edit,Create" }} Paste{% endblock %}
+{% block card_title %}{{ object|yesno:"Edit,Create" }} Paste{% endblock %}
+
+{% block content %}
+    <form method="post" action="
+        {% if object %}{% url 'voidpaste:paste-edit' link=object.link %}{% else %}{% url 'voidpaste:index' %}{% endif %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="{{ object|yesno:"Edit,Create" }} Paste" class="btn btn-primary btn-color">
+    </form>
+{% endblock %}
