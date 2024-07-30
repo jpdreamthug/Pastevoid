@@ -21,7 +21,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "_0flq=y)72!(bg(e_)u!at$l6k=7b2qk2$k*&jrx1u$m%oxko0")
 
 DATABASES = {
     "default": {
@@ -34,7 +34,7 @@ db_from_env = dj_database_url.config(conn_max_age=500,)
 
 DATABASES["default"].update(db_from_env)
 
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+DEBUG = os.environ.get("DJANGO_DEBUG", "True") != "False"
 
 STATIC_URL = "/static/"
 

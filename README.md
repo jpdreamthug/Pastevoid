@@ -16,7 +16,6 @@ Check this out https://void-paste.onrender.com/
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Environment Variables](#environment-variables)
 - [Usage](#usage)
 - [Initial Data](#initial-data)
 
@@ -77,22 +76,6 @@ Check this out https://void-paste.onrender.com/
    ```sh
    python manage.py loaddata initial_data.json
    ```
-
-## Environment Variables
-
-To keep sensitive information secure, you should use environment variables for configuration settings. You can use a `.env` file and the `python-decouple` package to manage these variables.
-
-
-1. Create a `.env` file in the root directory of your project:
-    ```sh
-    touch .env
-    ```
-
-2. Add your environment-specific variables to the `.env` file. For example:
-    ```ini
-    DJANGO_SECRET_KEY=your_secret_key
-    DJANGO_DEBUG=True
-    ```
 
 ## Usage
 
