@@ -57,7 +57,7 @@ class Paste(models.Model):
         return self.title
 
     def is_expired(self):
-        if self.delete_at <= timezone.now():
+        if self.delete_at and self.delete_at <= timezone.now():
             self.delete()
             return True
         return False
