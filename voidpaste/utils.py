@@ -1,6 +1,5 @@
 import random
 import string
-from datetime import timedelta
 
 from django.utils import timezone
 
@@ -16,15 +15,15 @@ DELETE_CHOICES = [
 
 def set_delete_time(choice):
     if choice == "10_minutes":
-        return timezone.now() + timedelta(minutes=10)
+        return timezone.now() + timezone.timedelta(minutes=10)
     elif choice == "1_hour":
-        return timezone.now() + timedelta(hours=1)
+        return timezone.now() + timezone.timedelta(hours=1)
     elif choice == "1_day":
-        return timezone.now() + timedelta(days=1)
+        return timezone.now() + timezone.timedelta(days=1)
     elif choice == "1_week":
-        return timezone.now() + timedelta(weeks=1)
+        return timezone.now() + timezone.timedelta(weeks=1)
     elif choice == "2_weeks":
-        return timezone.now() + timedelta(weeks=2)
+        return timezone.now() + timezone.timedelta(weeks=2)
     else:
         return None
 
